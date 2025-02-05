@@ -4,9 +4,15 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.shape.Rectangle;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import javafx.scene.paint.Color;
 
 public class Player {
+    public interface RoomChangeListener {
+        void onChangeRoom(String nextRoom);
+    }
+
     private ImageView imageView;
+    private RoomChangeListener listener;
 
     public Player() throws FileNotFoundException {
         Image player = new Image(new FileInputStream("C:\\Users\\User\\Pictures\\player.png"));
@@ -22,10 +28,15 @@ public class Player {
         return imageView;
     }
 
-    public void handleMovement(KeyEvent event, Rectangle door) {
+    public void setRoomChangeListener(RoomChangeListener listener) {
+        this.listener = listener;
+    }
+
+    public void handleMovement(KeyEvent event, Rectangle doorLeft, Rectangle doorRight, Runnable switchRoom, Runnable switchRoomB) {
         double currentX = imageView.getX();
         double currentY = imageView.getY();
 
+        // Move the player
         switch (event.getCode()) {
             case W: imageView.setY(currentY - 5); break;
             case S: imageView.setY(currentY + 5); break;
@@ -33,11 +44,15 @@ public class Player {
             case D: imageView.setX(currentX + 5); break;
         }
 
-        for (Rectangle door : doors) {
-            if (imageView.getBoundsInParent().intersects(door.getBoundsInParent())) {
-                System.out.println("Collision with a door!");
-               
-            }
-        }
+        // Check for collision with doors
+        if (imageView.getBoundsInParent().intersects(doorLeft.getBoundsInParent())) {
+        switchRoomB.run();
+        imageView.setX(1100);
+        imageView.setY(450);
     }
+    
+    if (imageView.getBoundsInParent().intersects(doorRight.getBoundsInParent())) {
+        switchRoom.run(); // Calls loadRoomB() in MainApp
+     }
+  }    
 }
