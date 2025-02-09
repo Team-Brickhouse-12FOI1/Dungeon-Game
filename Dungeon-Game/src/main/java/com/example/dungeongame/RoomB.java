@@ -10,17 +10,17 @@ public class RoomB {
     private Rectangle doorRight;
 
     public RoomB() {
-        room = new Pane(); // Initialize Pane
+        room = new Pane(); // Pane initializieren
 
-        // Room background
+        // Raum Hintergrund
         Rectangle background = new Rectangle(700, 300, 500, 400);
         background.setFill(Color.SKYBLUE);
 
-        // Left Door (Leads back to RoomA)
+        // Linke Tür (Führt zum RoomA)
         doorLeft = new Rectangle(700, 450, 30, 100);
         doorLeft.setFill(Color.BROWN);
 
-        // Right Door (For future rooms)
+        // Rechte Tür (Führt zum Rooms)
         doorRight = new Rectangle(1170, 450, 30, 100);
         doorRight.setFill(Color.BROWN);
 
