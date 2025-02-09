@@ -14,7 +14,7 @@ public class MainApp extends Application {
     private Room roomA;
     private RoomB roomB;
     
-    private String currentRoom = "RoomA"; // Track which room is active
+    private String currentRoom = "RoomA"; // Spurt welcher Raum Aktiv ist
     private String _roomB = "RoomB";
 
     @Override
@@ -45,7 +45,7 @@ public class MainApp extends Application {
     }
 
     private void loadRoomA() {
-        currentRoom = "RoomA"; // Set active room
+        currentRoom = "RoomA"; // Aktiven Raum setten
         root.getChildren().clear();
         root.getChildren().addAll(roomA.getRoom(), player.getImageView());
     
@@ -60,11 +60,11 @@ public class MainApp extends Application {
     }
 
     private void loadRoomB() {
-        currentRoom = "RoomB"; // Set active room
+        currentRoom = "RoomB"; // Aktiven Raum setzen
         root.getChildren().clear();
         root.getChildren().addAll(roomB.getRoom(), player.getImageView());
         
-        // Set player spawn in Room B
+        // Spieler Spawn in RoomB setzen
         player.getImageView().setX(760);
         player.getImageView().setY(450);
         
@@ -77,7 +77,7 @@ public class MainApp extends Application {
 
     private void switchRoom() {
         if (currentRoom.equals("RoomA")) {
-            loadRoomB(); // Only switch if in Room A
+            loadRoomB(); // Nur wechseln, wenn in RoomA
         }
     }
     private void switchRoomB() {
