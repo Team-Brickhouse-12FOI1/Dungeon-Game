@@ -38,7 +38,7 @@ public class Player {
         double currentX = imageView.getX();
         double currentY = imageView.getY();
 
-        // Move the player
+        // Bewegung des Spielers
         switch (event.getCode()) {
             case W: imageView.setY(currentY - 5); break;
             case S: imageView.setY(currentY + 5); break;
@@ -46,7 +46,7 @@ public class Player {
             case D: imageView.setX(currentX + 5); break;
         }
 
-        // Check for collision with doors
+        // Kollision checking
         if (imageView.getBoundsInParent().intersects(doorLeft.getBoundsInParent())) {
         switchRoomB.run();
         imageView.setX(1100);
@@ -54,7 +54,7 @@ public class Player {
     }
     
     if (imageView.getBoundsInParent().intersects(doorRight.getBoundsInParent())) {
-        switchRoom.run(); // Calls loadRoomB() in MainApp
+        switchRoom.run(); // Ruft loadRoomB() in MainApp
      }
   }    
 }
